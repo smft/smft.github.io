@@ -1,98 +1,348 @@
 <!DOCTYPE html>
-<html lang="en">
-<title>True Atmosphere</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
+<html>
+
+<head>
+  <title>ForecastMap</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+  <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet'/>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #map13kmCDA {
+      height: 100%;
+      width: 100%;
+    }
+    .parent {
+      position: absolute;
+      right: 40px;
+      top: 100px;
+    }
+  </style>
+</head>
+
 <body>
-
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="https://smft.github.io/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="https://github.com/smft" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Github</a>
-  </div>
-
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="https://smft.github.io/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="https://github.com/smft" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Github</a>
-  </div>
-</div>
-
-<!-- Header -->
-<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">True Atmosphere</h1>
-  <p class="w3-xlarge">Heimdallr 1.0 Data Assimilation System</p>
-</header>
-
-<!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <h1>Concept of Full Channel Assimilation</h1>
-    <h4 class="w3-padding-32" style="text-align:justify;">Operational numerical weather prediction centers have a long history of using multi-spectral
-                                                         and hyper-spectral infrared (IR) satellite observation to imporve their weather prediction skills.
-                                                         It is undisputed that impressive progress has been made regardless of the methodological inefficiency
-                                                         brought by channel selection approach in their data assimilation system treating hyper-spectral infrared
-                                                         observation. Hyper-spectral sensor observations's accuracy can be better than 0.2K if its spectral-resolving
-                                                         power (R = λ/∆λ) is higher than 1000, this means information content of hyper-spectral IR observation is higher
-                                                         than that of multi-spectral IR observation. However, a portion of information is deliberately discarded by channel
-                                                         selection and thus cannot make a difference to NWP. The figure below shows how full-channel assimilation of
-                                                         Cross-track Infrared Sounder (CrIS) observation could improve the accuracy of initial conidition in terms of
-                                                         Mean Absoulte Bias (MAB) and Standard Deviation (StDev) compared to assimilating the a few channel observations
-                                                         which are used byNational Centers for Environmental Prediction (NCEP) in its global forecast system. This result is
-                                                         produced by our Heimdallr 1.0 Data Assimilation System</h4>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/CrISQ.png" alt="#" height=auto width=100% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;"> Full Channel Assimilation's impact on lowering down the MAB and StDev in initial conditon</h5>
-  </div>
-</div>
-
-<!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-  <div class="w3-content">
-    <h1>Heimdallr 1.0 Data Assimilation System</h1>
-    <h4 class="w3-padding-32" style="text-align:justify;">The Heimdallr 1.0 data assimilation system is a 3-Dimensional hyper-spectral IR data assimilation system, which could handle
-                                                          randiance PC score, Full- and Selected-Channel radiance assimilation. With limited computational resource requirement and high
-                                                          availability, this system can be installed personal computers, single board computers, as well as HPC clusters using OpenMP and MPI
-                                                          with x86 and ARM instruction set. If you want a try, Please contact us using the information at the bottom of this page. </h4>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/NvidiaJetsonNano.jpeg" class="center" alt="#" height=50% width=50% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;" >A Nvidia Jetson-Nano SBC Running Heimdallr 1.0 data assimilation system</h5>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/RaspberryPi4B.jpeg" class="center" alt="#" height=50% width=50% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;">A 5-nodes Raspberry Pi 4B SBC Cluster Running Heimdallr 1.0 data assimilation system</h5>
-  </div>
-</div>
-
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">If YOU CAN NOT GET THE WHOLE PICTURE, USE REMOTE SENSING!</h1>
-    <h3 class="w3-margin w3-xlarge">Contact: Qi Zhang</h3>
-    <h3 class="w3-margin w3-xlarge">Email: Atmoszhangnju@outlook.com</h3>
-</div>
-
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else {
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
+  <div id="map13kmCDA"></div>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin="">
+  </script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js">
+  </script>
+  <script>
+    // reset layer
+    function showVal(L,overlay){
+      // set contour style
+      function setStyleLine(feature) {
+        return {
+          color: feature.properties.stroke,
+          weight: 3,
+        };
+      }
+      // set contourf style
+      function setStyleLineFill(feature) {
+        return {
+          fillColor: feature.properties.fill,
+          color: feature.properties.stroke,
+          fillOpacity: 0.5,
+          opacity: 0,
+          weight: 1,
+        };
+      }
+      // compose valid date
+      var valid_datetime = String(document.getElementById("validyear").value)+'-'+
+                           String(document.getElementById("validmonth").value)+'-'+
+                           String(document.getElementById("validday").value)+'_'+
+                           String(document.getElementById("validhour").value)
+      var inital_datetime = String(document.getElementById("inityear").value)+'-'+
+                            String(document.getElementById("initmonth").value)+'-'+
+                            String(document.getElementById("initday").value)+'_'+
+                            String(document.getElementById("inithour").value)
+      // refresh window
+      // load precipitation
+      var PRCP = "Hourly Precipitation"
+      $.getJSON("https://map13kmconus.s3.amazonaws.com/precip/PRCP_I"+inital_datetime+"V"+valid_datetime+".geojson",
+        function(data){
+          overlay[PRCP].clearLayers()
+          overlay[PRCP].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+        });
+      // load stp
+      var STP = "Significant Tornado Potential"
+      $.getJSON("https://map13kmconus.s3.amazonaws.com/sigtor/STP_I"+inital_datetime+"V"+valid_datetime+".geojson",
+        function(data){
+          overlay[STP].clearLayers()
+          overlay[STP].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+        });
+      // load rh2
+      var RH2 = "2m AGL Relative Humidity"
+      $.getJSON("https://map13kmconus.s3.amazonaws.com/relhum/RH2_I"+inital_datetime+"V"+valid_datetime+".geojson",
+        function(data){
+          overlay[RH2].clearLayers()
+          overlay[RH2].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+        });
+      // load rh2
+      var T2 = "2m AGL Temperature"
+      $.getJSON("https://map13kmconus.s3.amazonaws.com/temp/T2_I"+inital_datetime+"V"+valid_datetime+".geojson",
+        function(data){
+          overlay[T2].clearLayers()
+          overlay[T2].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+        });
+    }
+    // load a tile layer
+    var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>';
+  	var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibXJ1bmtub3duYXRtcyIsImEiOiJja3JwdGs4YnIzaHdsMm9vMmg5d3Y3cXh3In0.LH5kX_6_kV9ZHevssNOXpA';
+    var grayscale = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', attribution: mbAttr});
+		var streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', attribution: mbAttr});
+    // initialize the map
+    var map = L.map('map13kmCDA',{layers:[grayscale, streets],
+                                  fullscreenControl: true,
+                                  fullscreenControl: {pseudoFullscreen: false}
+                                 }).setView([37.00, -98.25], 4);
+    mapLink ='<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    // group overlay
+    var overlay = {
+        "2m AGL Temperature":L.layerGroup(),
+        "2m AGL Relative Humidity":L.layerGroup(),
+        "Hourly Precipitation":L.layerGroup(),
+        "Significant Tornado Potential":L.layerGroup(),
+      }
+    var basemap = {
+      "Basemap":grayscale,
+      "Street":streets,
+      }
+    // set valid date
+    var legend2 = L.control({position: 'bottomleft'});
+    legend2.onAdd = function (map) {
+      var div2 = L.DomUtil.create('div', 'info legend');
+      div2.innerHTML = '<select id="validyear" style=\"width: 120%; background-color: #00b3b3; border: none\">'+
+                       '<option>Valid Year</option>'+
+                       '<option value=\"2020\">2020</option>'+
+                       '<option value=\"2021\">2021</option>'+
+                       '<option value=\"2022\">2022</option>'+
+                       '<option value=\"2023\">2023</option>'+
+                       '</select><br>'+
+                       '<select id="validmonth" style=\"width: 120%; background-color: #00b3b3; border: none\">'+
+                       '<option>Valid Month</option>'+
+                       '<option value=\"01\">Jan.</option>'+
+                       '<option value=\"02\">Feb.</option>'+
+                       '<option value=\"03\">Mar.</option>'+
+                       '<option value=\"04\">Apr.</option>'+
+                       '<option value=\"05\">May.</option>'+
+                       '<option value=\"06\">Jun.</option>'+
+                       '<option value=\"07\">Jul.</option>'+
+                       '<option value=\"08\">Aug.</option>'+
+                       '<option value=\"09\">Sep.</option>'+
+                       '<option value=\"10\">Oct.</option>'+
+                       '<option value=\"11\">Nov.</option>'+
+                       '<option value=\"12\">Dec.</option>'+
+                       '</select><br>'+
+                       '<select id="validday" style=\"width: 120%; background-color: #00b3b3; border: none\">'+
+                       '<option>Valid Day</option>'+
+                       '<option value=\"01\">01</option>'+
+                       '<option value=\"02\">02</option>'+
+                       '<option value=\"03\">03</option>'+
+                       '<option value=\"04\">04</option>'+
+                       '<option value=\"05\">05</option>'+
+                       '<option value=\"06\">06</option>'+
+                       '<option value=\"07\">07</option>'+
+                       '<option value=\"08\">08</option>'+
+                       '<option value=\"09\">09</option>'+
+                       '<option value=\"10\">10</option>'+
+                       '<option value=\"11\">11</option>'+
+                       '<option value=\"12\">12</option>'+
+                       '<option value=\"13\">13</option>'+
+                       '<option value=\"14\">14</option>'+
+                       '<option value=\"15\">15</option>'+
+                       '<option value=\"16\">16</option>'+
+                       '<option value=\"17\">17</option>'+
+                       '<option value=\"18\">18</option>'+
+                       '<option value=\"19\">19</option>'+
+                       '<option value=\"20\">20</option>'+
+                       '<option value=\"21\">21</option>'+
+                       '<option value=\"22\">22</option>'+
+                       '<option value=\"23\">23</option>'+
+                       '<option value=\"24\">24</option>'+
+                       '<option value=\"25\">25</option>'+
+                       '<option value=\"26\">26</option>'+
+                       '<option value=\"27\">27</option>'+
+                       '<option value=\"28\">28</option>'+
+                       '<option value=\"29\">29</option>'+
+                       '<option value=\"30\">30</option>'+
+                       '<option value=\"31\">31</option>'+
+                       '</select><br>'+
+                       '<select id="validhour" style=\"width: 120%; background-color: #00b3b3; border: none\">'+
+                       '<option>Valid Hour</option>'+
+                       '<option value=\"00\">00</option>'+
+                       '<option value=\"01\">01</option>'+
+                       '<option value=\"02\">02</option>'+
+                       '<option value=\"03\">03</option>'+
+                       '<option value=\"04\">04</option>'+
+                       '<option value=\"05\">05</option>'+
+                       '<option value=\"06\">06</option>'+
+                       '<option value=\"07\">07</option>'+
+                       '<option value=\"08\">08</option>'+
+                       '<option value=\"09\">09</option>'+
+                       '<option value=\"10\">10</option>'+
+                       '<option value=\"11\">11</option>'+
+                       '<option value=\"12\">12</option>'+
+                       '<option value=\"13\">13</option>'+
+                       '<option value=\"14\">14</option>'+
+                       '<option value=\"15\">15</option>'+
+                       '<option value=\"16\">16</option>'+
+                       '<option value=\"17\">17</option>'+
+                       '<option value=\"18\">18</option>'+
+                       '<option value=\"19\">19</option>'+
+                       '<option value=\"20\">20</option>'+
+                       '<option value=\"21\">21</option>'+
+                       '<option value=\"22\">22</option>'+
+                       '<option value=\"23\">23</option>'+
+                       '</select><br>'+
+                       '<button style=\"width: 120%; background-color: #009900; border: none\" onclick=\"showVal(L,overlay)\">Set</button>';
+      return div2;
+    };
+    legend2.addTo(map);
+    // set initial date
+    var legend1 = L.control({position: 'bottomleft'});
+    legend1.onAdd = function (map) {
+      var div1 = L.DomUtil.create('div', 'info legend');
+      div1.innerHTML = '<select id="inityear" style=\"width: 120%; background-color: #cccc00; border: none\">'+
+                       '<option>Initial Year</option>'+
+                       '<option value=\"2020\">2020</option>'+
+                       '<option value=\"2021\">2021</option>'+
+                       '<option value=\"2022\">2022</option>'+
+                       '<option value=\"2023\">2023</option>'+
+                       '</select><br>'+
+                       '<select id="initmonth" style=\"width: 120%; background-color: #cccc00; border: none\">'+
+                       '<option>Initial Month</option>'+
+                       '<option value=\"01\">Jan.</option>'+
+                       '<option value=\"02\">Feb.</option>'+
+                       '<option value=\"03\">Mar.</option>'+
+                       '<option value=\"04\">Apr.</option>'+
+                       '<option value=\"05\">May.</option>'+
+                       '<option value=\"06\">Jun.</option>'+
+                       '<option value=\"07\">Jul.</option>'+
+                       '<option value=\"08\">Aug.</option>'+
+                       '<option value=\"09\">Sep.</option>'+
+                       '<option value=\"10\">Oct.</option>'+
+                       '<option value=\"11\">Nov.</option>'+
+                       '<option value=\"12\">Dec.</option>'+
+                       '</select><br>'+
+                       '<select id="initday" style=\"width: 120%; background-color: #cccc00; border: none\">'+
+                       '<option>Initial Day</option>'+
+                       '<option value=\"01\">01</option>'+
+                       '<option value=\"02\">02</option>'+
+                       '<option value=\"03\">03</option>'+
+                       '<option value=\"04\">04</option>'+
+                       '<option value=\"05\">05</option>'+
+                       '<option value=\"06\">06</option>'+
+                       '<option value=\"07\">07</option>'+
+                       '<option value=\"08\">08</option>'+
+                       '<option value=\"09\">09</option>'+
+                       '<option value=\"10\">10</option>'+
+                       '<option value=\"11\">11</option>'+
+                       '<option value=\"12\">12</option>'+
+                       '<option value=\"13\">13</option>'+
+                       '<option value=\"14\">14</option>'+
+                       '<option value=\"15\">15</option>'+
+                       '<option value=\"16\">16</option>'+
+                       '<option value=\"17\">17</option>'+
+                       '<option value=\"18\">18</option>'+
+                       '<option value=\"19\">19</option>'+
+                       '<option value=\"20\">20</option>'+
+                       '<option value=\"21\">21</option>'+
+                       '<option value=\"22\">22</option>'+
+                       '<option value=\"23\">23</option>'+
+                       '<option value=\"24\">24</option>'+
+                       '<option value=\"25\">25</option>'+
+                       '<option value=\"26\">26</option>'+
+                       '<option value=\"27\">27</option>'+
+                       '<option value=\"28\">28</option>'+
+                       '<option value=\"29\">29</option>'+
+                       '<option value=\"30\">30</option>'+
+                       '<option value=\"31\">31</option>'+
+                       '</select><br>'+
+                       '<select id="inithour" style=\"width: 120%; background-color: #cccc00; border: none\">'+
+                       '<option>Initial Hour</option>'+
+                       '<option value=\"00\">00</option>'+
+                       '<option value=\"01\">01</option>'+
+                       '<option value=\"02\">02</option>'+
+                       '<option value=\"03\">03</option>'+
+                       '<option value=\"04\">04</option>'+
+                       '<option value=\"05\">05</option>'+
+                       '<option value=\"06\">06</option>'+
+                       '<option value=\"07\">07</option>'+
+                       '<option value=\"08\">08</option>'+
+                       '<option value=\"09\">09</option>'+
+                       '<option value=\"10\">10</option>'+
+                       '<option value=\"11\">11</option>'+
+                       '<option value=\"12\">12</option>'+
+                       '<option value=\"13\">13</option>'+
+                       '<option value=\"14\">14</option>'+
+                       '<option value=\"15\">15</option>'+
+                       '<option value=\"16\">16</option>'+
+                       '<option value=\"17\">17</option>'+
+                       '<option value=\"18\">18</option>'+
+                       '<option value=\"19\">19</option>'+
+                       '<option value=\"20\">20</option>'+
+                       '<option value=\"21\">21</option>'+
+                       '<option value=\"22\">22</option>'+
+                       '<option value=\"23\">23</option>'+
+                       '</select><br>';
+      return div1;
+    };
+    legend1.addTo(map);
+    // group overlay
+    //var overlay = {
+    //    "2m AGL Temperature":L.layerGroup(),
+    //    "2m AGL Relative Humidity":L.layerGroup(),
+    //    "Hourly Precipitation":L.layerGroup(),
+    //    "Significant Tornado Potential":L.layerGroup(),
+    //  }
+    //var basemap = {
+    //  "Basemap":grayscale,
+    //  "Street":streets,
+    //  }
+    // load precipitation
+    //var PRCP = "Hourly Precipitation"
+    //$.getJSON("https://map13kmconus.s3.amazonaws.com/precip/PRCP_"+valid_datetime+".geojson",
+    //  function(data){
+    //    overlay[PRCP].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+    //  }
+    //);
+    // load stp
+    //var STP = "Significant Tornado Potential"
+    //$.getJSON("https://map13kmconus.s3.amazonaws.com/sigtor/STP_2020-04-13_09.geojson",
+    //  function(data){
+    //    overlay[STP].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+    //  }
+    //);
+    // load rh2
+    //var RH2 = "2m AGL Relative Humidity"
+    //$.getJSON("https://map13kmconus.s3.amazonaws.com/relhum/RH2_2020-04-13_09.geojson",
+    //  function(data){
+    //    overlay[RH2].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+    //  }
+    //);
+    // load rh2
+    //var T2 = "2m AGL Temperature"
+    //$.getJSON("https://map13kmconus.s3.amazonaws.com/temp/T2_2020-04-13_09.geojson",
+    //  function(data){
+    //    overlay[T2].addLayer(L.geoJson(data,{style:setStyleLineFill}));
+    //  }
+    //);
+    // layer control
+    L.control.layers(basemap,overlay).addTo(map)
+  </script>
 </body>
+
 </html>
