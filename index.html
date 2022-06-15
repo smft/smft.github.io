@@ -1,90 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
-<title>True Atmosphere</title>
+<html>
+<head>
+<title>OptimaForecast</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<body>
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+<link rel="manifest" href="icons/site.webmanifest">
+</head>
+<body id="myPage">
 
 <!-- Navbar -->
 <div class="w3-top">
-  <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="https://smft.github.io/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="https://github.com/smft" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Github</a>
-  </div>
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"></a>
+  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i></a>
+  <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Our Goal</a>
+  <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Our System</a>
+  <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Solutions</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+ </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="https://smft.github.io/" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="https://github.com/smft" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Github</a>
+  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+    <a href="#team" class="w3-bar-item w3-button">Our Goal</a>
+    <a href="#work" class="w3-bar-item w3-button">Our System</a>
+    <a href="#pricing" class="w3-bar-item w3-button">Solutions</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
   </div>
 </div>
 
-<!-- Header -->
-<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">True Atmosphere</h1>
-  <p class="w3-xlarge">Heimdallr 1.0 Data Assimilation System</p>
-</header>
-
-<!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <h1>Concept of Full Channel Assimilation</h1>
-    <h4 class="w3-padding-32" style="text-align:justify;">Operational numerical weather prediction centers have a long history of using multi-spectral
-                                                         and hyper-spectral infrared (IR) satellite observation to imporve their weather prediction skills.
-                                                         It is undisputed that impressive progress has been made regardless of the methodological inefficiency
-                                                         brought by channel selection approach in their data assimilation system treating hyper-spectral infrared
-                                                         observation. Hyper-spectral sensor observations's accuracy can be better than 0.2K if its spectral-resolving
-                                                         power (R = λ/∆λ) is higher than 1000, this means information content of hyper-spectral IR observation is higher
-                                                         than that of multi-spectral IR observation. However, a portion of information is deliberately discarded by channel
-                                                         selection and thus cannot make a difference to NWP. The figure below shows how full-channel assimilation of
-                                                         Cross-track Infrared Sounder (CrIS) observation could improve the accuracy of initial conidition in terms of
-                                                         Mean Absoulte Bias (MAB) and Standard Deviation (StDev) compared to assimilating the a few channel observations
-                                                         which are used byNational Centers for Environmental Prediction (NCEP) in its global forecast system. This result is
-                                                         produced by our Heimdallr 1.0 Data Assimilation System</h4>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/CrISQ.png" alt="#" height=auto width=100% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;"> Full Channel Assimilation's impact on lowering down the MAB and StDev in initial conditon</h5>
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="/Data_SSD_1/Mainpage/mainpagefigure.png" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <div class="w3-container w3-display-bottomleft w3-margin-bottom">
+    <button onclick="location.href='https://s3.amazonaws.com/trueatmosphere.org/Simulation.html'" class="w3-button w3-xlarge w3-theme w3-hover-teal">Our Forecast</button>
   </div>
 </div>
 
-<!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-  <div class="w3-content">
-    <h1>Heimdallr 1.0 Data Assimilation System</h1>
-    <h4 class="w3-padding-32" style="text-align:justify;">The Heimdallr 1.0 data assimilation system is a 3-Dimensional hyper-spectral IR data assimilation system, which could handle
-                                                          randiance PC score, Full- and Selected-Channel radiance assimilation. With limited computational resource requirement and high
-                                                          availability, this system can be installed personal computers, single board computers, as well as HPC clusters using OpenMP and MPI
-                                                          with x86 and ARM instruction set. If you want a try, Please contact us using the information at the bottom of this page. </h4>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/NvidiaJetsonNano.jpeg" class="center" alt="#" height=50% width=50% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;" >A Nvidia Jetson-Nano SBC Running Heimdallr 1.0 data assimilation system</h5>
-    <img src="https://raw.githubusercontent.com/smft/smft.github.io/main/RaspberryPi4B.jpeg" class="center" alt="#" height=50% width=50% onContextMenu="return false;" />
-    <h5 class="w3-text-grey" style="text-align:center;">A 5-nodes Raspberry Pi 4B SBC Cluster Running Heimdallr 1.0 data assimilation system</h5>
-  </div>
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-l1" id="team">
+<h2>Our Goal</h2>
+<p style="font-family:'Courier New'" align="justify">Operational numerical weather prediction centers have a long history of using hyper-spectral infrared IR satellite observation to improve the weather prediction skills. It is undisputed that impressive progress has been made regardless of the methodological inefficiency. However, the information content of hyper-spectral IR observation is highly rendered by the widely-used channel selection. To improve the data assimilation system’s capability of assimilating full-spectral information content derived from hyper-spectral infrared IR satellite observation, a data assimilation system which takes the advantage of principal component analysis &#x2014; Heimdallr 2.0 Data Assimilation System, is developed.</p>
 </div>
 
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">If YOU CAN NOT GET THE WHOLE PICTURE, USE REMOTE SENSING!</h1>
-    <h3 class="w3-margin w3-xlarge">Contact: Qi Zhang</h3>
-    <h3 class="w3-margin w3-xlarge">Email: Atmoszhangnju@outlook.com</h3>
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<h2>Our System</h2>
+<p style="font-family:'Courier New'" align="justify">The Heimdallr 2.0 data assimilation system is a 3-Dimensional variational data assimilation system, which enables selected-channel radiance, full-channel radiance, and principal component score assimilation method. This system is capable of assimilating most of the polar-orbiting hyper-spectral IR observation, e.g., CrIS, IASI, HIRAS. It will soon be able to assimilate geostationary hyperspectral IR observation, e.g., GIIRS later this year.</p>
 </div>
 
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
+<!-- Pricing Row -->
+<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+    <h2>Solutions</h2>
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <p class="w3-xlarge">Basic</p>
+        </li>
+        <li class="w3-padding-16"><b>13 km</b> Horizontal Resolution</li>
+        <li class="w3-padding-16"><b>1 km</b> Vertical Resolution</li>
+        <li class="w3-padding-16"><b>1 hour</b> Temporal Resolution</li>
+        <li class="w3-padding-16"><b>Twice a day</b> Forecast Initialization</li>
+        <li class="w3-theme-l5 w3-padding-24">
+          <button onclick="location.href='https://s3.amazonaws.com/trueatmosphere.org/Simulation.html'" class="w3-button w3-teal w3-padding-large"><i class='far fa-laugh-beam'></i> Free</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme-l2">
+          <p class="w3-xlarge">Pro</p>
+        </li>
+        <li class="w3-padding-16"><b>3 - 8 km</b> Horizontal Resolution</li>
+        <li class="w3-padding-16"><b>0.5 - 1.0 km</b> Vertical Resolution</li>
+        <li class="w3-padding-16"><b>30 - 60 minutes</b> Temporal Resolution</li>
+        <li class="w3-padding-16"><b>2 - 8 times per day</b> Forecast Initialization</li>
+        <li class="w3-theme-l5 w3-padding-24">
+          <button class="w3-button w3-teal w3-padding-large" onclick="location.href='mailto:contact@optimaforecast.info'"><i class='far fa-smile-beam'></i> Contact Us</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w3-third w3-margin-bottom">
+      <ul class="w3-ul w3-border w3-hover-shadow">
+        <li class="w3-theme">
+          <p class="w3-xlarge">Customerize</p>
+        </li>
+        <li class="w3-padding-16"> Up to <b>2 km</b></li>
+        <li class="w3-padding-16"> Up to <b>300 m</b></li>
+        <li class="w3-padding-16"> Up to <b>10 minutes</b></li>
+        <li class="w3-padding-16"> Up to <b>12 time per day</li>
+        <li class="w3-theme-l5 w3-padding-24">
+          <button class="w3-button w3-teal w3-padding-large" onclick="location.href='mailto:contact@optimaforecast.info'"><i class='far fa-smile-beam'></i> Contact Us</button>
+        </li>
+      </ul>
+    </div>
+</div>
+
+<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-theme-l5 w3-center" id="contact">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+    <p><i class="fa-solid fa-map-location w3-text-teal w3-xlarge"></i>  Hampton, VA</p>
+    <p><i class="fa-regular fa-envelope w3-text-teal w3-xlarge"></i>  contact@optimaforecast.info</p>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-small w3-teal" href="https://github.com/smft" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
+  <a class="w3-button w3-small w3-teal" href="https://www.researchgate.net/profile/Qi-Zhang-251" title="ResearchGate"><i class="fab fa-researchgate fa-2x"></i></a>
+</footer>
+
+<script >
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar")
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
   var x = document.getElementById("navDemo");
   if (x.className.indexOf("w3-show") == -1) {
     x.className += " w3-show";
@@ -93,6 +142,5 @@ function myFunction() {
   }
 }
 </script>
-
 </body>
 </html>
